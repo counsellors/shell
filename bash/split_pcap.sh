@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#-----------------------------------------------------------------------------
+# File:          split_pcap.sh
+# Creation Date: 2016-11-29 17:34
+# Author:        Sun on <zhaoxing-5@163.com>
+# License:       See the LICENSE file
+#-----------------------------------------------------------------------------
+
 function show_help {
     echo "Usage: $0 -r <pcap_file> -o <out_dir> -t <stream_type>"
     echo ""
