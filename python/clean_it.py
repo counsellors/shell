@@ -83,10 +83,21 @@ def clean_systemp():
                 ("火狐浏览器升级","MozillaBackgroundTask-*", 0 ), 
                 ("Outlook","CVR*.tmp.cvr", 0 ),
                 # ("7Zip","7zO*", 0 ),
-                ("adobe","~DF*.TMP", 0 )]
+                ("adobe","~DF*.TMP", 0 ),]
     for submodule in submodule_list:
         clean_sys_submodule(1, path, *submodule )
     
+def clean_coretemp():
+    global reduced_size
+    module_name = "系统内核缓存"
+    home_dir = os.getenv("SYSTEMROOT")
+    temp_dir = os.path.join(home_dir, "Temp")
+    tmp_count = 0
+    tmp_size = 0
+    path= pathlib.Path(temp_dir)
+    submodule_list = [("Office 安装补丁日志","*-x-none_MSPLOG.LOG",1)]
+    for submodule in submodule_list:
+        clean_sys_submodule(1, path, *submodule )
 
 def clean_dir(index, module_name, dirname):
     global reduced_size
@@ -135,4 +146,5 @@ if __name__ == "__main__":
         clean_dir(index, module_name, dirname)
         print("\r\n")
     clean_systemp()
+    clean_coretemp()
     print("\r\n\r\n共清理空间[{}]".format(sizeof_fmt(reduced_size)))
